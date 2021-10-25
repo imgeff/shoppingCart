@@ -91,11 +91,12 @@ margin-right: 10px;
 .cart {
   background-color: rgb(235, 234, 234);
   display: flex;
+  align-content: center;
   flex-basis: 17%;
   flex-flow: column wrap;
 }
 
-.cart .cart__title {
+.cart {
   flex-basis: 1;
   font-size: 16pt;
   text-align: center;
