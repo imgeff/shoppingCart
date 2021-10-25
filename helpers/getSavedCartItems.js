@@ -5,7 +5,9 @@ const getSavedCartItems = (callback, callback2) => {
   const getItems = localStorage.getItem('cartItems');
   olItems.innerHTML = getItems;
   total.innerHTML = getPrice;
-  callback2(Number(getPrice), 0);
+  const arrayPrice = getPrice.split(' ');
+  console.log(arrayPrice);
+  callback2(Number(arrayPrice[2]), 0);
   const liItems = document.querySelectorAll('.cart__item');
   liItems.forEach((item) => {
     item.addEventListener('click', callback);

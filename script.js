@@ -12,7 +12,7 @@ function ClearAllItemsOfCart() {
   const btnClear = document.querySelector('.empty-cart');
   btnClear.addEventListener('click', () => {
     olItems.innerHTML = '';
-    total.innerText = 0;
+    total.innerText = `Subtotal: R$ ${sum.toFixed(2)}`;
     sum = 0;
     saveCartItems(olItems.innerHTML, total.innerText);
   });
@@ -49,7 +49,7 @@ function calculatePriceOfCart(addPrice, removePrice) {
   }
 
   if (sum <= 0) sum = 0;
-  total.innerText = `${sum}`;
+  total.innerText = `Subtotal: R$ ${sum.toFixed(2)}`;
 }
 
 function extractPriceCart(item) {
