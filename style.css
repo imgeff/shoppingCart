@@ -106,4 +106,14 @@ margin-right: 10px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+#price {
+  font-size: 15px;
+}
+
+#price b {
+  color: red;
+  font-weight: 600;
 }
