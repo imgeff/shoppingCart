@@ -10,7 +10,6 @@ header {
   padding: 0;
   background-color: rgb(3, 52, 45);
   height: 100%;
-  margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -34,11 +33,12 @@ margin-right: 10px;
 
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 
 .items {
+  margin-top: 50px;
   display: flex;
   flex-basis: 70%;
   flex-wrap: wrap;
@@ -91,7 +91,7 @@ margin-right: 10px;
 .cart {
   background-color: rgb(235, 234, 234);
   display: flex;
-  flex-basis: 30%;
+  flex-basis: 17%;
   flex-flow: column wrap;
 }
 
