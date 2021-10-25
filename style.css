@@ -101,3 +101,12 @@ margin-right: 10px;
   font-size: 16pt;
   text-align: center;
 }
+
+.empty-cart {
+  width: 50%;
+  padding: 5px 10px;
+  border: 2px solid green;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+}
