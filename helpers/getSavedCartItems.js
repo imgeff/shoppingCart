@@ -6,7 +6,6 @@ const getSavedCartItems = (callback, callback2) => {
   olItems.innerHTML = getItems;
   total.innerHTML = getPrice;
   const arrayPrice = getPrice.split(' ');
-  console.log(arrayPrice);
   callback2(Number(arrayPrice[2]), 0);
   const liItems = document.querySelectorAll('.cart__item');
   liItems.forEach((item) => {
