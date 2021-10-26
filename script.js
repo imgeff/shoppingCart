@@ -97,7 +97,6 @@ function loadingItems() {
 
 function loaded() {
   const loading = document.querySelectorAll('.loading');
-  console.log(loading);
   loading.forEach((element) => element.remove());
 }
 
@@ -148,8 +147,23 @@ async function currentProducts(product) {
   listenerAdd();
 }
 
+function removeItems() {
+  const itemsOld = document.querySelectorAll('.item');
+  itemsOld.forEach((item) => item.remove());
+}
+
+function searchProduct() {
+  const inputSearch = document.querySelector('#search-products');
+  const buttonSearch = document.querySelector('.search-items img');
+  buttonSearch.addEventListener('click', () => {
+    removeItems();
+    const product = inputSearch.value;
+    currentProducts(product);
+  });
+}
+
 window.onload = () => { 
   getSavedCartItems(cartItemClickListener, calculatePriceOfCart);
-  currentProducts('computador');
   ClearAllItemsOfCart();
+  searchProduct();
 };

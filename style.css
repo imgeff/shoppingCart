@@ -6,13 +6,13 @@ body {
 }
 
 header {
-  
   color: white;
   padding: 0;
   background-color: rgb(3, 52, 45);
   height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header-title {
@@ -30,6 +30,26 @@ header {
 
 .header-cart img {
 margin-right: 10px;
+}
+
+.search-items {
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-items img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#search-products {
+  width: 50%;
+  text-align: center;
+  border: 2px solid rgb(13, 223, 13);
 }
 
 .container {
