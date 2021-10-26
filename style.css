@@ -118,7 +118,6 @@ margin-right: 10px;
 }
 
 .cart__item {
-  margin-right: 20px;
   width: 80%;
   font-size: 14px;
   font-weight: 600;
@@ -135,6 +134,13 @@ margin-right: 10px;
   border-radius: 10px;
 }
 
+img.icon-remove {
+  position: relative;
+  margin-right: 20px;
+  margin-top: 100px;
+  height: 25px;
+  width: 25px;
+}
 .cart__item b {
   color: red;
   font-size: 15px;

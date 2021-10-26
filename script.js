@@ -93,14 +93,16 @@ function loaded() {
 
 async function createItemsCart(id) {
   const divItem = document.createElement('div');
+  const iconRemove = document.createElement('img');
+  iconRemove.src = './remove-from-cart.png';
+  iconRemove.className = 'icon-remove';
   const requestData = await fetchItem(id);
   const { id: sku, title: name, price: salePrice, thumbnail: image } = requestData;
   const liItems = createCartItemElement({ sku, name, salePrice });
   const imgItems = createProductImageElement(image);
   calculatePriceOfCart(salePrice, 0);
   divItem.className = 'product-cart';
-  divItem.appendChild(imgItems);
-  divItem.appendChild(liItems);
+  divItem.append(imgItems, liItems, iconRemove);
   olItems.appendChild(divItem);
   saveCartItems(olItems.innerHTML, total.innerHTML);
 }
