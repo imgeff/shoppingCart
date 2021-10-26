@@ -13,7 +13,7 @@ function ClearAllItemsOfCart() {
   btnClear.addEventListener('click', () => {
     olItems.innerHTML = '';
     sum = 0;
-    total.innerHTML = `Subtotal: <b>R$ ${sum.toFixed(2)}</b>`;
+    total.innerHTML = `Subtotal: <b> R$ ${sum.toFixed(2)} </b>`;
     saveCartItems(olItems.innerHTML, total.innerText);
   });
 }
@@ -49,13 +49,13 @@ function calculatePriceOfCart(addPrice, removePrice) {
   }
 
   if (sum <= 0) sum = 0;
-  total.innerHTML = `Subtotal: <b>R$ ${sum.toFixed(2)}</b>`;
+  total.innerHTML = `Subtotal: <b> R$ ${sum.toFixed(2)} </b>`;
 }
 
 function extractPriceCart(item) {
   const separatePrice = item.innerText.split(' ');
   const lastPositionOfArray = separatePrice.length - 1;
-  const priceString = separatePrice[lastPositionOfArray].slice(1);
+  const priceString = separatePrice[lastPositionOfArray].slice(0);
   const price = Number(priceString);
   return price;
 }
@@ -77,6 +77,19 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
+function loadingItems() {
+  const sectionItems = document.querySelector('.items');
+  const loading = document.createElement('p');
+  loading.className = 'loading';
+  loading.innerText = 'Carregando...';
+  sectionItems.appendChild(loading);
+}
+
+function loaded() {
+  const loading = document.querySelector('.loading');
+  loading.remove();
+}
+
 async function createItemsCart(id) {
   const requestData = await fetchItem(id);
   const { id: sku, title: name, price: salePrice } = requestData;
@@ -94,19 +107,6 @@ function listenerAdd() {
       createItemsCart(itemSKU);
   });
   });
-}
-
-function loadingItems() {
-  const sectionItems = document.querySelector('.items');
-  const loading = document.createElement('p');
-  loading.className = 'loading';
-  loading.innerText = 'Carregando...';
-  sectionItems.appendChild(loading);
-}
-
-function loaded() {
-  const loading = document.querySelector('.loading');
-  loading.remove();
 }
 
 async function currentProducts(product) {

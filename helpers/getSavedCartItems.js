@@ -5,8 +5,11 @@ const getSavedCartItems = (callback, callback2) => {
   const getItems = localStorage.getItem('cartItems');
   olItems.innerHTML = getItems;
   total.innerHTML = getPrice;
-  const arrayPrice = getPrice.split(' ');
-  callback2(Number(arrayPrice[2]), 0);
+  if (getPrice) {
+    const arrayPrice = getPrice.split(' ');
+    console.log(arrayPrice);
+    callback2(Number(arrayPrice[3]), 0);
+  }
   const liItems = document.querySelectorAll('.cart__item');
   liItems.forEach((item) => {
     item.addEventListener('click', callback);
