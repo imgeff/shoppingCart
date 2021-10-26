@@ -61,8 +61,9 @@ function extractPriceCart(item) {
 }
 
 function cartItemClickListener(event) {
- const li = event.target;
- const productCart = li.parentNode;
+ const element = event.target;
+ const productCart = element.parentNode;
+ const li = element.previousElementSibling;
  calculatePriceOfCart(0, extractPriceCart(li));
  productCart.remove();
  saveCartItems(olItems.innerHTML, total.innerHTML);
@@ -74,7 +75,6 @@ function createCartItemElement({ sku, name, salePrice }) {
   li.innerHTML = `<br><br><br>${name} 
   <br>
   <br><b>R$ ${salePrice}</b>`;
-  li.addEventListener('click', cartItemClickListener);
   return li;
 }
 
@@ -96,6 +96,7 @@ async function createItemsCart(id) {
   const iconRemove = document.createElement('img');
   iconRemove.src = './remove-from-cart.png';
   iconRemove.className = 'icon-remove';
+  iconRemove.addEventListener('click', cartItemClickListener);
   const requestData = await fetchItem(id);
   const { id: sku, title: name, price: salePrice, thumbnail: image } = requestData;
   const liItems = createCartItemElement({ sku, name, salePrice });

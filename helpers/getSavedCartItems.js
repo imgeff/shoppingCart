@@ -7,12 +7,11 @@ const getSavedCartItems = (callback, callback2) => {
   total.innerHTML = getPrice;
   if (getPrice) {
     const arrayPrice = getPrice.split(' ');
-    console.log(arrayPrice);
     callback2(Number(arrayPrice[3]), 0);
   }
-  const liItems = document.querySelectorAll('.cart__item');
-  liItems.forEach((item) => {
-    item.addEventListener('click', callback);
+  const removeIcons = document.querySelectorAll('.icon-remove');
+  removeIcons.forEach((icon) => {
+    icon.addEventListener('click', callback);
   });
 };
 
