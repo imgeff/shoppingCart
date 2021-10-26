@@ -92,9 +92,11 @@ function loaded() {
 
 async function createItemsCart(id) {
   const requestData = await fetchItem(id);
-  const { id: sku, title: name, price: salePrice } = requestData;
+  const { id: sku, title: name, price: salePrice, thumbnail: image } = requestData;
   const liItems = createCartItemElement({ sku, name, salePrice });
+  const imgItems = createProductImageElement(image);
   calculatePriceOfCart(salePrice, 0);
+  olItems.appendChild(imgItems);
   olItems.appendChild(liItems);
   saveCartItems(olItems.innerHTML, total.innerHTML);
 }
