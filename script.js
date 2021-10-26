@@ -13,7 +13,7 @@ function ClearAllItemsOfCart() {
   btnClear.addEventListener('click', () => {
     olItems.innerHTML = '';
     sum = 0;
-    total.innerHTML = `Subtotal: <b> R$ ${sum.toFixed(2)} </b>`;
+    total.innerHTML = `Subtotal : <b>  R$ ${sum.toFixed(2)} </b>`;
     saveCartItems(olItems.innerHTML, total.innerText);
   });
 }
