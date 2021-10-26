@@ -62,8 +62,9 @@ function extractPriceCart(item) {
 
 function cartItemClickListener(event) {
  const li = event.target;
+ const productCart = li.parentNode;
  calculatePriceOfCart(0, extractPriceCart(li));
- li.remove();
+ productCart.remove();
  saveCartItems(olItems.innerHTML, total.innerHTML);
 }
 
