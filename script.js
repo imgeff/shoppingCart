@@ -37,9 +37,9 @@ function createProductItemElement({ sku, name, image }) {
   return section;
 }
 
-function getSkuFromProductItem(item) {
-  return item.querySelector('span.item__sku').innerText;
-}
+// function getSkuFromProductItem(item) {
+//   return item.querySelector('span.item__sku').innerText;
+// }
 
 function calculatePriceOfCart(addPrice, removePrice) {
   if (addPrice === 0) {
@@ -69,13 +69,21 @@ function cartItemClickListener(event) {
  saveCartItems(olItems.innerHTML, total.innerHTML);
 }
 
-function createCartItemElement({ sku, name, salePrice }) {
+function createCartItemElement({ name, salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerHTML = `<br><br><br>${name} 
   <br>
   <br><b>R$ ${salePrice}</b>`;
   return li;
+}
+
+function loadingCart() {
+  const listCart = document.querySelector('.cart__items');
+  const loading = document.createElement('p');
+  loading.className = 'loading';
+  loading.innerText = 'Carregando...';
+  listCart.appendChild(loading);
 }
 
 function loadingItems() {
@@ -87,17 +95,20 @@ function loadingItems() {
 }
 
 function loaded() {
-  const loading = document.querySelector('.loading');
-  loading.remove();
+  const loading = document.querySelectorAll('.loading');
+  console.log(loading);
+  loading.forEach((element) => element.remove());
 }
 
 async function createItemsCart(id) {
+  loadingCart();
   const divItem = document.createElement('div');
   const iconRemove = document.createElement('img');
   iconRemove.src = './remove-from-cart.png';
   iconRemove.className = 'icon-remove';
   iconRemove.addEventListener('click', cartItemClickListener);
   const requestData = await fetchItem(id);
+  loaded();
   const { id: sku, title: name, price: salePrice, thumbnail: image } = requestData;
   const liItems = createCartItemElement({ sku, name, salePrice });
   const imgItems = createProductImageElement(image);
