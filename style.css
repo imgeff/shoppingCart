@@ -124,6 +124,17 @@ margin-right: 10px;
   font-weight: 600;
 }
 
+.product-cart {
+  display: flex;
+  align-items: center;
+}
+
+.product-cart .item__image {
+  margin-right: 10px;
+  margin-top: 45px;
+  border-radius: 10px;
+}
+
 .cart__item b {
   color: red;
   font-size: 15px;
