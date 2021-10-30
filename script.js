@@ -7,6 +7,7 @@ function createProductImageElement(imageSource) {
 const total = document.querySelector('#price');
 const olItems = document.querySelector('.cart__items');
 let sum = 0;
+let indicator = 0;
 
 function ClearAllItemsOfCart() {
   const btnClear = document.querySelector('.empty-cart');
@@ -124,9 +125,11 @@ function listenerAdd() {
   getButtonAddToCart.forEach((elementBTN, index) => {
     elementBTN.addEventListener('click', () => {
       const itemSKU = getButtonAddToCart[index].parentNode.firstElementChild.innerText;
+      console.log(itemSKU);
       createItemsCart(itemSKU);
   });
   });
+  indicator += 1;
 }
 
 async function currentProducts(product) {
@@ -152,18 +155,54 @@ function removeItems() {
   itemsOld.forEach((item) => item.remove());
 }
 
+function removeh2s() {
+  const categorias = document.querySelectorAll('.categorias');
+  categorias.forEach((categoria) => categoria.remove());
+}
 function searchProduct() {
   const inputSearch = document.querySelector('#search-products');
   const buttonSearch = document.querySelector('.search-items img');
   buttonSearch.addEventListener('click', () => {
     removeItems();
+    removeh2s();
     const product = inputSearch.value;
     currentProducts(product);
   });
 }
 
+async function startPage(product, categoria, callback) {
+  loadingItems();
+  const listProducts = await fetchProducts(product);
+  loaded();
+  const listProductsSlice = listProducts.results.slice(0, 5);
+  const sectionItems = document.querySelector('.items');
+  const h2 = document.createElement('h2');
+  h2.className = 'categorias';
+  h2.innerText = categoria;
+  sectionItems.appendChild(h2);
+  listProductsSlice.forEach(({ id: sku, title: name, thumbnail: image, price: salePrice }) => {
+    const sectionProductsItems = createProductItemElement({ sku, name, image, salePrice });
+    sectionItems.appendChild(sectionProductsItems);
+  });
+    callback();
+}
+
+function callStartPage() {
+  if (indicator === 1) {
+    startPage('cozinha', 'Cozinha', listenerAdd);
+  }
+  startPage('cozinha', 'Cozinha');
+  if (indicator === 2) {
+    startPage('sala', 'Sala', listenerAdd);
+  }
+  startPage('sala', 'Sala');
+  if (indicator === 0) {
+    startPage('quarto', 'Quarto', listenerAdd);
+  }
+}
 window.onload = () => { 
   getSavedCartItems(cartItemClickListener, calculatePriceOfCart);
   ClearAllItemsOfCart();
   searchProduct();
+  callStartPage();
 };

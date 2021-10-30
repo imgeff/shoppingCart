@@ -44,6 +44,7 @@ margin-right: 10px;
   width: 30px;
   height: 30px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 #search-products {
@@ -133,6 +134,7 @@ margin-right: 10px;
   flex-basis: 1;
   font-size: 14pt;
   text-align: start;
+  height: 1400px;
 }
 
 .empty-cart {
@@ -195,7 +197,7 @@ img.icon-remove {
 }
 
 footer {
-  margin-top: auto;
+  margin-top: 200px;
 }
 
 .my-footer {
@@ -206,5 +208,11 @@ footer {
 }
 .text-footer {
   font-size: large;
+  font-weight: 400;
   color: white;
+}
+
+.categorias {
+  width: 100%;
+  text-align: center;
 }
