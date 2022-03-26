@@ -11,7 +11,7 @@ Nesse projeto, fui capaz de:
 - Trabalhar com funções assíncronas;
 - Implementar testes unitários.
 
----## O que foi desenvolvido
+## O que foi desenvolvido
 
 Nesse projeto foi feito um carrinho de compras totalmente dinâmico! E o melhor: consumindo dados diretamente de uma API! a API do Mercado Livre para buscarmos produtos à venda.
 
